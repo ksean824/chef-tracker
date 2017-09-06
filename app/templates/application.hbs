@@ -1,5 +1,26 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+<h1>Chef Tracker</h1>
+<p>{{availableChefs.length}} of our {{model.length}} chefs are cooking right now!</p>
+<p>Our {{model.length}} chefs teach {{totalStudents}} students.</p>
+<ul>
+  {{#each model as |chef|}}
+    {{#if chef.isCookingToday}}
+        <li class="isCookingToday">
+            {{chef.name}}
+            <button {{action 'exit' chef}}>Exit</button>
+        </li>
+        {{else}}
+          <li class="isNotCookingToday">
+            {{chef.name}}
+            <button {{action 'enter' chef}}>Enter</button>
+            <button {{action 'delete' chef}}>Delete</button>
+          </li>
+    {{/if}}
+    Number of students:
+    <button {{action 'decrementStudents' chef}}>-</button>
+    {{chef.numberOfStudents}}
+    <button {{action 'incrementStudents' chef}}>+</button>
+  {{/each}}
+</ul>
+<hr>
+{{input value=newChef}}
+<button {{action 'saveNewChef'}}>Save</button>

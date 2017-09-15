@@ -10,10 +10,12 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('chefs', function() {
     this.route('chef', {path: ':chef_id'})
+    this.route('chef.edit', {path: ':chef_id/edit'})
   })
   this.route('about')
   this.route('training')
   this.route('favorite-word', {path: 'favorite-word/:word'})
+  this.route('contact')
 });
 
 export default Router;

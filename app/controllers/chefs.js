@@ -21,9 +21,6 @@ export default Ember.Controller.extend({
       }).save()
       Ember.set(this, 'newChef', '')
     },
-    deleteChef(chef) {
-      chef.destroyRecord() //saves automatically, no need to call "Save"
-    },
     decrementStudents(chef) {
       if (chef.get('numberOfStudents') != 0) {
         Ember.set(chef, 'numberOfStudents', (chef.get('numberOfStudents') - 1) )

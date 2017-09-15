@@ -5,18 +5,14 @@
     <p>Our {{model.length}} chefs teach {{totalStudents}} students.</p>
     <ul>
       {{#each model as |chef|}}
-        {{#if chef.isCookingToday}}
-          <li class="isCookingToday">
+        <li class="{{if chef.isCookingToday 'isCookingToday' 'isNotCookingToday'}}">
             {{#link-to 'chefs.chef' chef}}{{chef.name}}{{/link-to}}
+        {{#if chef.isCookingToday}}
             <button {{action 'exit' chef}}>Exit</button>
-          </li>
         {{else}}
-          <li class="isNotCookingToday">
-            {{chef.name}}
             <button {{action 'enter' chef}}>Enter</button>
-            <button {{action 'delete' chef}}>Delete</button>
-          </li>
         {{/if}}
+        </li>
         Number of students:
         <button {{action 'decrementStudents' chef}}>-</button> {{chef.numberOfStudents}}
         <button {{action 'incrementStudents' chef}}>+</button>

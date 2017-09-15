@@ -1,2 +1,5 @@
 <h1>{{model.name}}</h1>
 <h3>{{model.description}}</h3>
+<p>{{input type="checkbox" name="hasDegree" checked=model.hasDegree}} Has Culinary Degree?</p>
+{{link-to 'Edit this chef' 'chefs.chef.edit' model}}
+<button {{action 'deleteChef' model}}>Delete</button>
